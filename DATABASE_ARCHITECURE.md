@@ -3,73 +3,7 @@
 This document provides a detailed overview of the database design, entity relationships, and the implementation of advanced database features like triggers and JOINs within the Precision ATS project.
 
 ## Entity-Relationship Diagram
-
-erDiagram
-    ROLES ||--o{ USERS : "assigned to"
-    USERS ||--o{ USERS : "manages"
-    USERS ||--o{ USER_SKILLS : "has"
-    SKILLS ||--o{ USER_SKILLS : "required in"
-    JOBS ||--o{ APPLICATIONS : "has"
-    USERS ||--o{ APPLICATIONS : "submits"
-    USERS ||--o{ AUDIT_LOGS : "logged for"
-
-    ROLES {
-        bigint id PK
-        varchar name
-    }
-
-    USERS {
-        bigint id PK
-        varchar name
-        varchar email
-        varchar password
-        bigint role_id FK
-        bigint manager_id FK
-        varchar department
-        varchar location
-        varchar status
-    }
-
-    SKILLS {
-        bigint id PK
-        varchar name
-        varchar category
-    }
-
-    USER_SKILLS {
-        bigint user_id PK
-        bigint skill_id PK
-        int proficiency_level
-        int years_experience
-    }
-
-    JOBS {
-        bigint id PK
-        varchar title
-        text description
-        varchar department
-        varchar location
-        varchar type
-        varchar status
-        date posted_date
-    }
-
-    APPLICATIONS {
-        bigint id PK
-        bigint job_id FK
-        bigint user_id FK
-        varchar status
-        date applied_date
-    }
-
-    AUDIT_LOGS {
-        bigint id PK
-        varchar table_name
-        bigint record_id
-        varchar action
-        text details
-        datetime timestamp
-    }
+<img width="6389" height="5570" alt="User Management and Skills-2026-04-05-140614" src="https://github.com/user-attachments/assets/cb43f0aa-709c-4754-9afe-f3bad57149cb" />
 
 ## Core Tables
 
